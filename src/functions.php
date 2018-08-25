@@ -33,3 +33,33 @@ function task1()
     }
 }
 task1();
+echo "<br/>";
+echo "Функция 2<br/>";
+
+function task2()
+{
+    function writeJson($show = false)
+    {
+        $data = [
+            ["Россия", "США", "Испания", "Австралия"],
+            ["Италия", "Нидерладны", "Голандия", "Франция"],
+            ["Хорватия", "Черногория", "Турция", "Болгария"],
+        ];
+        $encoded = json_encode($data, JSON_UNESCAPED_UNICODE);
+        if ($show) {
+            echo $encoded;
+        }
+        file_put_contents('output2.json', $encoded);
+    }
+    writeJson(true);
+function readJson()
+{
+    $data = file_get_contents('output2.json');
+    //echo $data;
+    //echo "<br/><br/>";
+    //$decoded = json_decode($data, true);
+    //print_r($decoded);
+}
+    readJson();
+}
+task2();
